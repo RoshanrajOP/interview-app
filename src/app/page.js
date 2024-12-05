@@ -44,11 +44,10 @@ export default function Home() {
       .catch((err) => {
         console.error('Error accessing media devices:', err.name, err.message);
       });
-  }, []);
-
+  }, [chunks]); 
   const startRecording = () => {
     if (mediaRecorder) {
-      setChunks([]); // Clear any previous chunks
+      setChunks([]); 
       mediaRecorder.start();
       setIsRecording(true);
     }
