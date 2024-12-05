@@ -35,7 +35,7 @@ export default function Home() {
         recorder.onstop = () => {
           const blob = new Blob(chunks, { type: 'video/mp4' });
           const videoURL = window.URL.createObjectURL(blob);
-          // The line to update saved video is removed
+          // Removed saving the video URL line
           setChunks([]); // Clear chunks after stopping
         };
 
@@ -44,10 +44,11 @@ export default function Home() {
       .catch((err) => {
         console.error('Error accessing media devices:', err.name, err.message);
       });
-  }, [chunks]); 
+  }, []); // Run only once on mount
+
   const startRecording = () => {
     if (mediaRecorder) {
-      setChunks([]); 
+      setChunks([]); // Clear any previous chunks
       mediaRecorder.start();
       setIsRecording(true);
     }
@@ -86,7 +87,7 @@ export default function Home() {
             <li>Permission for camera, microphone, and screen sharing is required.</li>
             <li>Be in professional attire and avoid distractions.</li>
             <li>Give a detailed response, providing as much information as possible.</li>
-            <li>Answer questions with examples and projects you've worked on.</li>
+            <li>Answer questions with examples and projects you&apos;ve worked on.</li> {/* Escaped apostrophe */}
           </ul>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <button
